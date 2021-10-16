@@ -1,0 +1,28 @@
+<div [formGroup]="form">
+  <label [attr.for]="field.key">{{field.label}}</label>
+
+  <div [ngSwitch]="field.type">
+
+    <input *ngSwitchCase="fieldsEnum.STRING" [formControlName]="field.key" type="text">
+
+    <select *ngSwitchCase="fieldsEnum.SELECTBOX" [formControlName]="field.key">
+      <option *ngFor="let value of field.values" [value]="value">{{value}}</option>
+    </select>
+
+    <input *ngSwitchCase="fieldsEnum.DATEPICKER" [formControlName]="field.key" type="date">
+
+    <input *ngSwitchCase="fieldsEnum.USD" [formControlName]="field.key" type="number" step=".01">
+
+    <div *ngSwitchCase="fieldsEnum.AWB" [formArrayName]="field.key">
+      <input *ngFor="let _ of getFormArray(field.key).controls; index as idx" [formControlName]="idx" type="text">
+    </div>
+
+    <div *ngSwitchCase="fieldsEnum.STRINGLIST" [formArrayName]="field.key">
+      <button (click)="addStringListField(field)" type="button">add</button>
+      <input *ngFor="let _ of getFormArray(field.key).controls; index as idx" [formControlName]="idx" type="text">
+    </div>
+
+  </div>
+
+  <div class="errorMessage" *ngIf="!isValid">{{field.label}} is required</div>
+</div>

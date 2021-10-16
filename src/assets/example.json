@@ -1,0 +1,37 @@
+{
+  "id": 5861,
+  "name": "CSX",
+  "type": "Ocean",
+  "fields": [
+    {
+      "paymentType": {
+        "type": "selectbox",
+        "label": "What is the payment for?",
+        "required": true,
+        "values": [
+          "Storage"
+        ]
+      }
+    },
+    {
+      "awb": {
+        "type": "string",
+        "label": "Bill of Lading",
+        "validation": "",
+        "required": true
+      }
+    },
+    {
+      "pickupDate": {
+        "type": "datepicker",
+        "label": "Pickup Date"
+      }
+    },
+    {
+      "containers": {
+        "type": "stringlist",
+        "label": "Containers"
+      }
+    }
+  ]
+}

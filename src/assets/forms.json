@@ -1,0 +1,38 @@
+{
+  "fields": [
+    {
+      "paymentType": {
+        "type": "selectbox",
+        "label": "What is the payment for?",
+        "required": true,
+        "values": [
+          "ISC",
+          "Storage",
+          "Other"
+        ]
+      }
+    },
+    {
+      "awb": {
+        "type": "awb",
+        "label": "AWB",
+        "validation": "",
+        "required": true
+      }
+    },
+    {
+      "amount": {
+        "type": "usd",
+        "label": "Amount",
+        "validation": "[0-9]*",
+        "required": true
+      }
+    },
+    {
+      "paidTo": {
+        "type": "string",
+        "label": "Paid to"
+      }
+    }
+  ]
+}
